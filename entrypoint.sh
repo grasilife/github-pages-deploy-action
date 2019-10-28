@@ -1,3 +1,10 @@
+### 
+# @Author: 付国强
+ # @Date: 2019-10-28 14:26:56
+ # @LastEditors: 付国强
+ # @LastEditTime: 2019-10-28 14:58:19
+ # @Description: 
+ ###
 #!/bin/sh -l
 
 set -e
@@ -84,7 +91,8 @@ fi
 
 # Commits the data to Github.
 echo "Deploying to GitHub..." && \
-git add -f $FOLDER && \
+cd  $FOLDER && \
+git add -A . && \
 
 git commit -m "Deploying to ${BRANCH} from ${BASE_BRANCH:-master} ${GITHUB_SHA}" --quiet && \
 git push $REPOSITORY_PATH `git subtree split --prefix $FOLDER ${BASE_BRANCH:-master}`:$BRANCH --force && \
