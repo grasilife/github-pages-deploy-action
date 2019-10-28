@@ -2,7 +2,7 @@
 # @Author: 付国强
  # @Date: 2019-10-28 14:26:56
  # @LastEditors: 付国强
- # @LastEditTime: 2019-10-28 15:14:06
+ # @LastEditTime: 2019-10-28 15:22:37
  # @Description: 
  ###
 #!/bin/sh -l
@@ -91,7 +91,7 @@ fi
 
 # Commits the data to Github.
 echo "Deploying to GitHub..." && \
-cd $FOLDER && \
+cd "./${FOLDER}"
 git add -A . && \
 
 git commit -m "Deploying to ${BRANCH} from ${BASE_BRANCH:-master} ${GITHUB_SHA}" --quiet && \
