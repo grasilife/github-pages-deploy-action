@@ -1,10 +1,3 @@
-### 
-# @Author: 付国强
- # @Date: 2019-10-28 14:26:56
- # @LastEditors: 付国强
- # @LastEditTime: 2019-10-28 15:45:22
- # @Description: 
- ###
 #!/bin/sh -l
 
 set -e
@@ -33,9 +26,9 @@ case "$FOLDER" in /*|./*)
 esac
 
 # Installs Git and jq.
-apt-get update && \
-apt-get install -y git && \
-apt-get install -y jq && \
+#apt-get update && \
+#apt-get install -y git && \
+#apt-get install -y jq && \
 
 # Gets the commit email/name if it exists in the push event payload.
 COMMIT_EMAIL=`jq '.pusher.email' ${GITHUB_EVENT_PATH}`
