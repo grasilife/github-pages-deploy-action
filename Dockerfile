@@ -14,5 +14,5 @@ RUN apk --no-cache add \
 	git \
 	jq
 
-ADD entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
