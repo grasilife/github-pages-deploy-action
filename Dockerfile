@@ -5,9 +5,9 @@ LABEL "com.github.actions.description"="This action will handle the building and
 LABEL "com.github.actions.icon"="git-commit"
 LABEL "com.github.actions.color"="orange"
 
-LABEL "repository"="http://github.com/grasilife/gh-pages-github-action"
-LABEL "homepage"="http://github.com/grasilife/gh-pages-gh-action"
-LABEL "maintainer"="grasilife <434543162@qq.com>"
+LABEL "repository"="https://github.com/testthedocs/gh-pages-github-action"
+LABEL "homepage"="https://github.com/testthedocs/gh-pages-gh-action"
+LABEL "maintainer"="TestTheDocs"
 
 # hadolint ignore=DL3018
 RUN apk --no-cache add \

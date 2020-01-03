@@ -20,7 +20,7 @@ jobs:
       uses: actions/checkout@master
 
     - name: Build and Deploy
-      uses: grasilife/github-pages-deploy-action@master
+      uses: testthedocs/github-pages-deploy-action@master
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BASE_BRANCH: master # The branch the action should deploy from.

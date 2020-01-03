@@ -1,6 +1,6 @@
-name: 'Deploy to vuepress'
-description: 'This action will handle the building and deploying process of your vuepress to GitHub Pages.'
-author: 'guoqiang.fu <434543162@qq.com>'
+name: 'Deploy to Vuepress'
+description: 'This action will handle the building and deploying process Vuepress to GitHub Pages.'
+author: 'TestTheDocs'
 runs:
   using: 'docker'
   image: 'Dockerfile'
