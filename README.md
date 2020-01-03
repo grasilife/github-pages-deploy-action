@@ -1,3 +1,15 @@
+> NOTE: THIS IS WIP
+
+This actions is *not* ready for production, yet!!
+
+
+Based on:
+
+- https://github.com/maxheld83/ghpages
+- https://github.com/grasilife/github-pages-deploy-action
+
+
+
 # GitHub Pages Deploy Action :rocket: 
 
 [![Actions Status](https://github.com/grasilife/github-pages-deploy-action/workflows/integration/badge.svg)](https://github.com/grasilife/github-pages-deploy-action/actions) [![View Action](https://img.shields.io/badge/view-action-blue.svg)](https://github.com/marketplace/actions/deploy-to-github-pages) [![Issues](https://img.shields.io/github/issues/grasilife/github-pages-deploy-action.svg)](https://github.com/grasilife/github-pages-deploy-action/issues)
