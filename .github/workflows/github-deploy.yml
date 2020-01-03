@@ -9,6 +9,6 @@ jobs:
       - uses: testthedocs/github-pages-deploy-action@master
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: "test/build"
+          #BRANCH: gh-pages
+          BUILD_DIR: "test/build/"
           BUILD_SCRIPT: npm run-script integrationTest
