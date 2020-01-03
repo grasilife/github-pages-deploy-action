@@ -1,10 +1,3 @@
-### 
-# @Author: 付国强
- # @Date: 2019-10-28 14:26:56
- # @LastEditors: 付国强
- # @LastEditTime: 2019-10-28 15:45:22
- # @Description: 
- ###
 #!/bin/sh -l
 
 set -e
@@ -32,14 +25,10 @@ case "$FOLDER" in /*|./*)
   exit 1
 esac
 
-# Installs Git and jq.
-apt-get update && \
-apt-get install -y git && \
-apt-get install -y jq && \
 
 # Gets the commit email/name if it exists in the push event payload.
-COMMIT_EMAIL=`jq '.pusher.email' ${GITHUB_EVENT_PATH}`
-COMMIT_NAME=`jq '.pusher.name' ${GITHUB_EVENT_PATH}`
+COMMIT_EMAIL=$(jq '.pusher.email' "${GITHUB_EVENT_PATH}")
+COMMIT_NAME=$(jq '.pusher.name' "${GITHUB_EVENT_PATH}")
 
 # If the commit email/name is not found in the event payload then it falls back to the actor.
 if [ -z "$COMMIT_EMAIL" ]
@@ -53,7 +42,7 @@ then
 fi
 
 # Directs the action to the the Github workspace.
-cd $GITHUB_WORKSPACE && \
+cd "$GITHUB_WORKSPACE" && \
 
 # Configures Git.
 git init && \
@@ -68,17 +57,17 @@ REPOSITORY_PATH="https://${ACCESS_TOKEN:-"x-access-token:$GITHUB_TOKEN"}@github.
 if [ "$(git ls-remote --heads "$REPOSITORY_PATH" "$BRANCH" | wc -l)" -eq 0 ];
 then
   echo "Creating remote branch ${BRANCH} as it doesn't exist..."
-  git checkout "${BASE_BRANCH:-master}" && \
-  git checkout --orphan $BRANCH && \
+  git checkout ${BASE_BRANCH:-master} && \
+  git checkout --orphan "$BRANCH" && \
   git rm -rf . && \
   touch README.md && \
   git add README.md && \
   git commit -m "Initial ${BRANCH} commit" && \
-  git push $REPOSITORY_PATH $BRANCH
+  git push "$REPOSITORY_PATH" "$BRANCH"
 fi
 
 # Checks out the base branch to begin the deploy process.
-git checkout "${BASE_BRANCH:-master}" && \
+git checkout ${BASE_BRANCH:-master} && \
 
 # Builds the project if a build script is provided.
 echo "Running build scripts... $BUILD_SCRIPT" && \
@@ -86,7 +75,7 @@ eval "$BUILD_SCRIPT" && \
 
 if [ "$CNAME" ]; then
   echo "Generating a CNAME file in in the $FOLDER directory..."
-  echo $CNAME > $FOLDER/CNAME
+  echo "$CNAME" > "$FOLDER"/CNAME
 fi
 
 # Commits the data to Github.
@@ -95,6 +84,6 @@ cd "./${FOLDER}"
 git add -A . && \
 
 git commit -m "Deploying to ${BRANCH} from ${BASE_BRANCH:-master} ${GITHUB_SHA}" --quiet && \
-git push $REPOSITORY_PATH `git subtree split --prefix $FOLDER ${BASE_BRANCH:-master}`:$BRANCH --force && \
+git push "$REPOSITORY_PATH" $(git subtree split --prefix "$FOLDER" ${BASE_BRANCH:-master}):"$BRANCH" --force && \
 
 echo "Deployment succesful!"
