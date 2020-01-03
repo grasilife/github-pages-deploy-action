@@ -1,14 +1,12 @@
 name: integration
 on: [push]
+
 jobs:
   integration-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-
-      - name: Build and Deploy
-        uses: testthedocs/github-pages-deploy-action@master
+      - uses: actions/checkout@master
+      - uses: testthedocs/github-pages-deploy-action@master
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
