@@ -1,4 +1,4 @@
-name: 'Deploy to Vuepress'
+name: 'Vuepress to GitHub Pages'
 description: 'This action will handle the building and deploying process Vuepress to GitHub Pages.'
 author: 'TestTheDocs'
 runs:
